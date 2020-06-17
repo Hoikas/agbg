@@ -130,6 +130,16 @@ const urlParams = new URLSearchParams(queryString);
 const inputHideControl = urlParams.get("hideControl");
 if ((inputHideControl == null) | (inputHideControl == "false")) {
   document.getElementById("controller").style.display = "block";
+} else {
+  // Start the stupid thing at 0,0 not in some braindead offset location.
+  var list = document.getElementsByClassName("section");
+  for (let item of list) {
+    item.style.position = "absolute";
+    item.style.left = 0;
+    item.style.top = 0;
+    item.style.paddingTop = 0;
+    item.style.paddingBottom = 0;
+  }
 }
 
 const inputShape = urlParams.get("shape");
